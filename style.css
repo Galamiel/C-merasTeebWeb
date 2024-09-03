@@ -11,12 +11,6 @@ body {
     color: #333;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 /* Cabeçalho */
 header {
     display: flex;
@@ -25,19 +19,27 @@ header {
     background-color: rgb(14, 19, 20);
     padding: 15px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-/* Logo à esquerda */
+/* Container do cabeçalho */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo */
 header .logo img {
-    margin-bottom: -30px;
     width: 150px; /* Ajuste conforme necessário */
     height: auto;
 }
 
-/* Navegação à direita */
+/* Navegação */
 header nav {
-    display: flex;
-    justify-content: flex-end;
     flex-grow: 1;
 }
 
@@ -45,11 +47,12 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    justify-content: flex-end;
 }
 
 header nav ul li {
-    padding: 3px 8px;
-    border-radius: 20%;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 header nav ul li a {
@@ -63,21 +66,10 @@ header nav ul li:hover {
     background-color: #585858;
 }
 
-/* Câmeras */
-.cameras {
-    padding: 20px 0;
-}
-
-.cameras h2 {
-    text-align: center;
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.camera-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* Controle Câmeras */
+.cameras .camera-grid {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -87,6 +79,8 @@ header nav ul li:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    flex: 1 1 calc(25% - 20px);
+    margin: 10px;
 }
 
 .camera-item iframe {
@@ -101,10 +95,53 @@ header nav ul li:hover {
     color: #333;
 }
 
+/* Mapa e menu lateral */
+.mapa-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mapa {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
 /* Rodapé */
 footer {
     background-color: rgb(14, 19, 20);
-    padding: 15px 0;;
     color: #efefef;
     text-align: center;
     padding: 20px 0;
@@ -120,4 +157,39 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .mapa-container {
+        flex-direction: column;
+    }
+
+    .mapa {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        padding: 10px 0;
+    }
+
+    .camera-item {
+        flex: 1 1 100%;
+    }
 }
