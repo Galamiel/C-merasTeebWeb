@@ -1,0 +1,123 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(14, 19, 20);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo à esquerda */
+header .logo img {
+    margin-bottom: -30px;
+    width: 150px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+/* Navegação à direita */
+header nav {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    padding: 3px 8px;
+    border-radius: 20%;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #c6c5c5;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li:hover {
+    background-color: #585858;
+}
+
+/* Câmeras */
+.cameras {
+    padding: 20px 0;
+}
+
+.cameras h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.camera-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.camera-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.camera-item iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.camera-item p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Rodapé */
+footer {
+    background-color: rgb(14, 19, 20);
+    padding: 15px 0;;
+    color: #efefef;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
