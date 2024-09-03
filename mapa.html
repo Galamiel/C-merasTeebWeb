@@ -40,7 +40,8 @@
                         <li><a href="#">Local 2 - Câmera 2</a></li>
                         <li><a href="#">Local 3 - Câmera 1</a></li>
                         <li><a href="#">Local 3 - Câmera 2</a></li>
-                    </ul>
+                    </ul>             
+                    <button id="openMapButton">Abrir Localização no Google Maps</button>
                 </div>
             </div>
         </div>
@@ -52,6 +53,18 @@
             <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
         </div>
     </footer>
+    <script>
+        document.getElementById('openMapButton').addEventListener('click', function() {
+            // Coordenadas de exemplo: latitude e longitude
+            const latitude = -3.590263829162326;
+            const longitude = -41.118597995360815;
+            const zoom = 15; // Nível de zoom do mapa
+            const url = `https://www.google.com/maps/@${latitude},${longitude},${zoom}z`;
+            
+            // Abre o link em uma nova aba
+            window.open(url, '_blank');
+        });
+    </script>
 </body>
 
 </html>

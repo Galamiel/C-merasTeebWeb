@@ -193,3 +193,37 @@ footer a:hover {
         flex: 1 1 100%;
     }
 }
+
+/*aaaa mapa erradoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaa
+a
+aaaaaa
+aa
+aa*/
+
+/* Estilo do botão */
+#openMapButton {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Texto branco */
+    border: none; /* Sem borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    text-align: center; /* Alinhar o texto ao centro */
+    text-decoration: none; /* Sem sublinhado */
+    display: inline-block; /* Exibição em linha com padding */
+    font-size: 16px; /* Tamanho da fonte */
+    margin: 10px 2px; /* Margem */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+#openMapButton:hover {
+    background-color: #45a049; /* Cor de fundo ao passar o mouse */
+}
+
+
+
+/*aaaaa
+a
+a
+a
+*/
