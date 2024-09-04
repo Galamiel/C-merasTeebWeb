@@ -4,6 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -12,6 +15,48 @@ body {
 }
 
 /* Cabeçalho */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(14, 19, 20);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    list-style: none;
+    margin: 0;
+    width: max-content;
+    z-index: 1000; 
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Exibir menu ao passar o cursor */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -19,7 +64,7 @@ header {
     background-color: rgb(14, 19, 20);
     padding: 15px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+
 }
 
 /* Container do cabeçalho */
@@ -51,27 +96,55 @@ header nav ul {
 }
 
 header nav ul li {
-    padding: 5px 10px;
-    border-radius: 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: transparent; /* Cor de fundo padrão */
+        transition: background-color 0.3s ease;
+    
 }
 
 header nav ul li a {
-    text-decoration: none;
-    color: #c6c5c5;
-    font-weight: bold;
-    transition: color 0.3s ease;
+        text-decoration: none;
+        color: #c6c5c5;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        display: block; /* Faz com que o link ocupe toda a área do li */
+        padding: 10px 15px; /* Adiciona um padding ao link para que ele não fique colado às bordas */
 }
 
 header nav ul li:hover {
-    background-color: #585858;
+    background-color: rgb(241, 196, 0); /* Cor de fundo ao passar o mouse */
+}
+header nav ul li a:hover {
+    color: #000000;
+}
+/*Btn Voltar para o topo*/
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(241, 196, 0);
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 1000%;
+    text-align: center;
+    font-size: 1.5em;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    z-index: 1000; 
 }
 
-/* Banner */
+.back-to-top:hover {
+    background-color: rgb(201, 165, 6);
+}
+
+
 /* Banner */
 .banner {
     position: relative;
     width: 100%;
-    height: 100vh; /* Expande o banner para ocupar a altura total da tela */
+    height: 100vh; 
     overflow: hidden;
     text-align: center;
     color: #ffffff;
@@ -156,7 +229,57 @@ header nav ul li:hover {
     margin-bottom: 10px;
 }
 
-/* Seção de Informações Rápidas */
+/* Seção Sobre */
+.sobre {
+    position: relative;
+    margin-top: -10 0px;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    background-image: url('imagens/background2.jpg'); 
+   
+    background-size: cover; /* Faz com que a imagem cubra toda a área */
+    background-position: center; /* Centraliza a imagem de fundo */
+    background-repeat: no-repeat;
+}
+
+.sobre-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sobre-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.sobre-text h2 {
+    color: rgb(241, 196, 0);
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.sobre-text p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.sobre-image {
+    flex: 1;
+ 
+}
+
+.sobre-image img {
+    margin-left: 150px;
+    width: 100%;
+    height: auto;
+    border-radius: 500px;
+}
+
 .informacoes {
     padding: 40px 0;
 }

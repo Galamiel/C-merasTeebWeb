@@ -1,110 +1,129 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+    <!DOCTYPE html>
+    <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeebWeb</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TeebWeb</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="imagens/TeebLogo.png" alt="Logo">
+    <body>
+        <header  id="inicio">
+            <div class="container">
+                <div class="logo">
+                    <img src="imagens/TeebLogo.png" alt="Logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li class="dropdown">
+                            <a href="#cameras" class="dropdown-toggle">Câmeras</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="tiangua.html">Tianguá</a></li>
+                                <li><a href="acarape.html">Acarape</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li><a href="mapa.html">Mapa</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
+                
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Câmeras</a></li>
-                    <li><a href="mapa.html">Mapa</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        </header>
 
-    <main>
-        <section class="banner">
-            <div class="banner-image">
-                <img src="imagens/berserk.jpg" alt="Imagem do Banner">
+        <a href="#inicio" class="back-to-top">
+            &#x2191; 
+        </a>
+        
+
+        <main>
+            <section class="banner">
+                <div class="banner-image">
+                    <img src="imagens/pessoas.jpg" alt="Imagem do Banner">
+                </div>
+                <div class="banner-content">
+                    <h1>Bem-vindo ao TeebWeb</h1>
+                    <p>Monitoramento de Câmeras e Soluções em Segurança</p>
+                    <a href="#sobre" class="btn-primary">Saiba Mais</a>
+                </div>
+            </section>
+
+            <section id="sobre" class="sobre">
+                <div class="sobre-content">
+                    <div class="sobre-text">
+                        <h2>Sobre Nós</h2>
+                        <p>
+                            Somos uma empresa dedicada à segurança e monitoramento. Nosso objetivo é oferecer as melhores soluções em câmeras e monitoramento para garantir a proteção que você precisa.
+                        </p>
+                        <p>
+                            Com uma equipe experiente e tecnologias avançadas, garantimos serviços de alta qualidade para nossos clientes. Conheça mais sobre nossos produtos e serviços.
+                        </p>
+                    </div>
+                    <div class="sobre-image">
+                        <img src="imagens/criancas.jpg" alt="Sobre Nós">
+                    </div>
+                </div>
+            </section>
+            
+
+            <section class="informacoes">
+                <h2>Informações Rápidas</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3>Informação 1</h3>
+                        <p>Detalhes sobre a Informação 1.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Informação 2</h3>
+                        <p>Detalhes sobre a Informação 2.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Informação 3</h3>
+                        <p>Detalhes sobre a Informação 3.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cameras" class="cameras">
+                <h2>Câmeras ao Vivo</h2>
+                <div class="camera-grid">
+                    <div class="camera-item">
+                        <a href="camera1.html">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <p>Câmera 1 - Localização</p>
+                        </a>
+                    </div>
+                    <div class="camera-item">
+                        <a href="camera2.html">
+                            <iframe src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" frameborder="0" allowfullscreen></iframe>
+                            <p>Câmera 2 - Localização</p>
+                        </a>
+                    </div>
+                    <div class="camera-item">
+                        <a href="camera3.html">
+                            <iframe src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" frameborder="0" allowfullscreen></iframe>
+                            <p>Câmera 3 - Localização</p>
+                        </a>
+                    </div>
+                    <div class="camera-item">
+                        <a href="camera4.html">
+                            <iframe src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" frameborder="0" allowfullscreen></iframe>
+                            <p>Câmera 4 - Localização</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 CamTeebWeb. Todos os direitos reservados.</p>
+                <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
             </div>
-            <div class="banner-content">
-                <h1>Bem-vindo ao TeebWeb</h1>
-                <p>Monitoramento de Câmeras e Soluções em Segurança</p>
-                <a href="#" class="btn-primary">Saiba Mais</a>
-            </div>
-        </section>
+        </footer>
+    </body>
 
-        <section class="destaques">
-            <h2>Destaques</h2>
-            <div class="destaque-grid">
-                <div class="destaque-item">
-                    <img src="imagens/destaque1.jpg" alt="Destaque 1">
-                    <h3>Destaque 1</h3>
-                    <p>Descrição do Destaque 1.</p>
-                </div>
-                <div class="destaque-item">
-                    <img src="imagens/destaque2.jpg" alt="Destaque 2">
-                    <h3>Destaque 2</h3>
-                    <p>Descrição do Destaque 2.</p>
-                </div>
-                <div class="destaque-item">
-                    <img src="imagens/destaque3.jpg" alt="Destaque 3">
-                    <h3>Destaque 3</h3>
-                    <p>Descrição do Destaque 3.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="informacoes">
-            <h2>Informações Rápidas</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3>Informação 1</h3>
-                    <p>Detalhes sobre a Informação 1.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Informação 2</h3>
-                    <p>Detalhes sobre a Informação 2.</p>
-                </div>
-                <div class="info-item">
-                    <h3>Informação 3</h3>
-                    <p>Detalhes sobre a Informação 3.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cameras">
-            <h2>Câmeras ao Vivo</h2>
-            <div class="camera-grid">
-                <div class="camera-item">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <p>Câmera 1 - Localização</p>
-                </div>
-                <div class="camera-item">
-                    <iframe src="https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID" frameborder="0" allowfullscreen></iframe>
-                    <p>Câmera 2 - Localização</p>
-                </div>
-                <div class="camera-item">
-                    <iframe src="https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID" frameborder="0" allowfullscreen></iframe>
-                    <p>Câmera 3 - Localização</p>
-                </div>
-                <div class="camera-item">
-                    <iframe src="https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID" frameborder="0" allowfullscreen></iframe>
-                    <p>Câmera 4 - Localização</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 CamTeebWeb. Todos os direitos reservados.</p>
-            <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
-        </div>
-    </footer>
-</body>
-
-</html>
+    </html>
