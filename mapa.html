@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teebWeb</title>
+    <title>TeebWeb - Mapa Personalizado</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Incluindo o CSS do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Incluindo o CSS do Leaflet.markercluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <style>
+        #map {
+            height: 550px;
+            width: 50%;
+            margin: 20px 0;
+            margin-left: -60px;
+            padding: -100px;
+        }
+
+        /* Resetando a formatação do popup para padrão */
+        .leaflet-popup-content {
+            font-size: 16px;
+            margin: 0px;
+            color: #333;
+            padding: 0px;
+            border-radius: 10px;
+            background-color: #0e1314;
+            position: relative; /* Adicionado para o posicionamento do ícone */
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 10px;
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .leaflet-popup-content h3 {
+            font-size: 18px;
+            color: #c6c5c5;
+            padding-top: 15px;
+        }
+
+        /* Estilo padrão das imagens do popup */
+        .leaflet-popup-content img {
+            padding: 8px;
+            width: 320px;
+            height: auto;
+            display: flex;
+            border-radius: 10px;
+            position: relative; /* Adicionado para o posicionamento do ícone */
+        }
+
+        /* Nova imagem no popup sem formatações */
+        .no-style-image {
+            border: none;
+            padding: 0;
+            width: 200px;
+            height: auto;
+            border-radius: 0;
+            position: relative;
+        }
+
+        /* Estilo do ícone do player */
+        .player-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: url('imagens/player.png') no-repeat center center;
+            background-size: contain;
+            z-index: 10; /* Certifica-se de que o ícone está sobre a imagem */
+        }
+
+        .leaflet-container a.leaflet-popup-close-button {
+            width: 30px;
+            font: 20px/32px Tahoma, Verdana, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,43 +102,110 @@
 
     <main>
         <div class="container">
-            <div class="mapa-container">
-                <div class="mapa">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d333266.6319802228!2d-41.118597995360815!3d-3.590263829162326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7eb471b50dc8603%3A0x983b3c28be7f6677!2sTiangu%C3%A1%2C%20CE%2C%2062320-000!5e0!3m2!1spt-BR!2sbr!4v1725385114283!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="sidebar">
-                    <h3>Escolha o Local e a Câmera</h3>
-                    <ul>
-                        <li><a href="#">Local 1 - Câmera 1</a></li>
-                        <li><a href="#">Local 1 - Câmera 2</a></li>
-                        <li><a href="#">Local 2 - Câmera 1</a></li>
-                        <li><a href="#">Local 2 - Câmera 2</a></li>
-                        <li><a href="#">Local 3 - Câmera 1</a></li>
-                        <li><a href="#">Local 3 - Câmera 2</a></li>
-                    </ul>             
-                    <button id="openMapButton">Abrir Localização no Google Maps</button>
-                </div>
-            </div>
+            <!-- Div para o mapa -->
+            <div id="map"></div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 VistaViva. Todos os direitos reservados.</p>
+            <p>&copy; 2024 TeebWeb. Todos os direitos reservados.</p>
             <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
         </div>
     </footer>
+
+    <!-- Incluindo o JavaScript do Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Incluindo o JavaScript do Leaflet.markercluster -->
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
     <script>
-        document.getElementById('openMapButton').addEventListener('click', function() {
-            // Coordenadas de exemplo: latitude e longitude
-            const latitude = -3.590263829162326;
-            const longitude = -41.118597995360815;
-            const zoom = 15; // Nível de zoom do mapa
-            const url = `https://www.google.com/maps/@${latitude},${longitude},${zoom}z`;
-            
-            // Abre o link em uma nova aba
-            window.open(url, '_blank');
+        // Inicializando o mapa com zoom interativo e scroll para zoom
+        var map = L.map('map', {
+            center: [-3.735286, -41.109326], // Coordenadas iniciais
+            zoom: 13, // Zoom inicial
+            zoomControl: true, // Controle de zoom no mapa
+            scrollWheelZoom: true // Ativar zoom pelo scroll do mouse
         });
+
+        // Adicionando o tile layer do OpenStreetMap com opções otimizadas
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+
+        // Criando um grupo de marcadores para o cluster
+        var markers = L.markerClusterGroup();
+
+        // Personalizando o marcador
+        var customIcon = L.icon({
+            iconUrl: 'imagens/video.png', // Caminho do ícone
+            iconSize: [38, 38], // Tamanho do ícone
+            popupAnchor: [0, -16], // Posição do popup
+        });
+
+        // Função para manter o popup aberto quando o mouse estiver sobre ele
+        function keepPopupOpen(popup, marker) {
+            var popupElement = popup.getElement();
+
+            // Detecta quando o mouse entra no popup
+            popupElement.addEventListener('mouseenter', function () {
+                marker.off('mouseout'); // Desativa o fechamento automático
+            });
+
+            // Detecta quando o mouse sai do popup
+            popupElement.addEventListener('mouseleave', function () {
+                marker.on('mouseout', function () {
+                    marker.closePopup(); // Reativa o fechamento
+                });
+            });
+        }   
+
+        // Adicionando múltiplos marcadores ao cluster
+        var locations = [
+            { lat: -3.745286, lng: -41.102326, name: "Caixa Econômica", image: "imagens/camera1.jpeg", link: "camera1.html" },
+            { lat: -3.755282, lng: -41.101322, name: "Localização 1", image: "imagens/camera1.jpeg", link: "camera1.html" },
+            { lat: -3.766282, lng: -41.110322, name: "Localização 2", image: "imagens/camera2.jpeg", link: "camera1.html" },
+            { lat: -3.777282, lng: -41.116322, name: "Localização 3", image: "imagens/camera3.jpeg", link: "camera1.html" },
+            { lat: -3.785284, lng: -41.109324, name: "Localização 4", image: "imagens/camera1.jpeg", link: "camera1.html" },
+            { lat: -3.796284, lng: -41.112324, name: "Localização 5", image: "imagens/camera2.jpeg", link: "camera1.html" },
+        ];
+
+        locations.forEach(function (location) {
+            var marker = L.marker([location.lat, location.lng], { icon: customIcon });
+            var popupContent =
+                `<div class="leaflet-popup-content">
+                    <h3>${location.name}</h3>
+                    <a href="${location.link}" target="_blank">
+                        <img src="${location.image}" alt="Imagem 1">
+                    </a>
+                    <!-- Imagem adicionada com ícone de player -->
+                    <div style="position: relative; display: inline-block; top: -75px;">
+                        <div class="player-icon"></div>
+                    </div>
+                    
+                </div>`;
+
+            marker.bindPopup(popupContent);
+
+            // Eventos para abrir o popup ao passar o mouse sobre o marcador
+            marker.on('mouseover', function () {
+                marker.openPopup();
+            });
+
+            // Mantém o popup aberto ao passar o mouse sobre ele
+            marker.on('popupopen', function (e) {
+                keepPopupOpen(e.popup, marker);
+            });
+
+            // Fecha o popup quando o mouse sair do marcador e do popup
+            marker.on('mouseout', function () {
+                marker.closePopup();
+            });
+
+            markers.addLayer(marker);
+        });
+
+        // Adicionando o grupo de marcadores ao mapa
+        map.addLayer(markers);
     </script>
 </body>
 
