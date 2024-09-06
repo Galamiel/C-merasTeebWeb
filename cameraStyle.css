@@ -1,5 +1,5 @@
-/* Reset básico */
-* {
+ /* Reset básico */
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,84 +11,84 @@ body {
     color: #333;
 }
 
-/* Cabeçalho */
-header {
-    background-color: rgb(14, 19, 20);
-    padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Logo */
-header .logo img {
-    width: 150px;
-    height: auto;
-}
-
-/* Navegação */
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    justify-content: flex-end;
-}
-
-header nav ul li {
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: #c6c5c5;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-header nav ul li:hover {
-    background-color: #585858;
-}
-
 /* Seção de vídeo e detalhes */
 .video-detalhes {
     padding: 40px 20px;
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.video-detalhes h1 {
-    text-align: center;
-    font-size: 2.5em;
+.video-info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
     margin-bottom: 20px;
 }
 
 .video-container {
+    flex: 2;
+    margin-right: 20px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: column;
 }
 
 .video-container iframe {
     width: 100%;
-    max-width: 800px;
     height: 450px;
     border-radius: 5px;
 }
 
-.video-info {
-    text-align: center;
+.info-e-comentarios {
+    margin-top: 20px;
 }
 
-.video-info h2 {
+.camera-options {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+}
+
+.camera-options h2 {
     font-size: 1.8em;
     margin-bottom: 10px;
+}
+
+.camera-options ul {
+    list-style: none;
+    padding: 0;
+}
+
+.camera-options ul li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.camera-options ul li a {
+    display: flex;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+}
+
+.camera-options .thumb {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+/* Estilo da seção de informações e comentários */
+.video-info h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
 .video-info p {
@@ -96,47 +96,71 @@ header nav ul li:hover {
     line-height: 1.5;
 }
 
-/* Rodapé */
-footer {
-    background-color: rgb(14, 19, 20);
-    color: #efefef;
-    text-align: center;
-    padding: 20px 0;
+.comentarios {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+.comentarios h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.comentario {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comentario p {
+    margin: 0 0 5px;
+}
+
+.comentario span {
     font-size: 0.9em;
+    color: #666;
 }
 
-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
+.novo-comentario {
+    margin-top: 20px;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.novo-comentario textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.novo-comentario button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.novo-comentario button:hover {
+    background-color: #0056b3;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .video-container iframe {
-        height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    header nav ul {
+    .video-info-container {
         flex-direction: column;
-        align-items: center;
     }
 
-    header nav ul li {
-        padding: 10px 0;
-    }
-
-    .video-detalhes h1 {
-        font-size: 2em;
-    }
-
-    .video-container iframe {
-        height: 200px;
+    .camera-options {
+        margin-left: 0;
+        margin-top: 20px;
     }
 }

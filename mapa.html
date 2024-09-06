@@ -6,28 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeebWeb - Mapa Personalizado</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Incluindo o CSS do Leaflet -->
+    <link rel="stylesheet" href="cameraStyle.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Incluindo o CSS do Leaflet.markercluster -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
     <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        main {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
         #map {
             height: 550px;
-            width: 50%;
-            margin: 20px 0;
-            margin-left: -60px;
-            padding: -100px;
+            width: 70%;
+        }
+
+        .camera-options {
+            width: 30%;
+            max-height: 550px; /* Limite a altura para rolagem */
+            overflow-y: auto; /* Adiciona barra de rolagem se necessário */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+
+        .camera-options h2 {
+            margin-top: 0;
+        }
+
+        .camera-options ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .camera-options li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .camera-options .thumb {
+            width: 100px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .camera-options .camera-info {
+            flex: 1;
+        }
+
+        .camera-info p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .camera-info span {
+            color: #777;
         }
 
         /* Resetando a formatação do popup para padrão */
         .leaflet-popup-content {
             font-size: 16px;
             margin: 0px;
+            width: 350px;
+            height: 250px;
             color: #333;
             padding: 0px;
-            border-radius: 10px;
+            border-radius: 7px;
             background-color: #0e1314;
-            position: relative; /* Adicionado para o posicionamento do ícone */
         }
 
         .leaflet-popup-content-wrapper {
@@ -36,44 +91,45 @@
             padding: 0px;
             text-align: center;
         }
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            background: #0e1314;
+            color: #333;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+            }
 
         .leaflet-popup-content h3 {
             font-size: 18px;
-            color: #c6c5c5;
+            color:#f9f9f9   ;
             padding-top: 15px;
         }
 
-        /* Estilo padrão das imagens do popup */
         .leaflet-popup-content img {
             padding: 8px;
-            width: 320px;
+            width: 350px;
             height: auto;
             display: flex;
             border-radius: 10px;
-            position: relative; /* Adicionado para o posicionamento do ícone */
         }
 
-        /* Nova imagem no popup sem formatações */
         .no-style-image {
             border: none;
             padding: 0;
             width: 200px;
             height: auto;
             border-radius: 0;
-            position: relative;
         }
 
-        /* Estilo do ícone do player */
         .player-icon {
             position: absolute;
-            top: 50%;
+            top: -120px;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 40px;
             height: 40px;
             background: url('imagens/player.png') no-repeat center center;
             background-size: contain;
-            z-index: 10; /* Certifica-se de que o ícone está sobre a imagem */
+            z-index: 10;
         }
 
         .leaflet-container a.leaflet-popup-close-button {
@@ -101,10 +157,79 @@
     </header>
 
     <main>
-        <div class="container">
-            <!-- Div para o mapa -->
-            <div id="map"></div>
+        <!-- Div para o mapa -->
+        <div id="map"></div>
+
+        <!-- Div para as opções de câmeras com rolagem -->
+        <div class="camera-options">
+            <h2>Opções de Câmera</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="/imagens/espetinhoRodoviaria.jpeg" alt="Rodoviária Pizzarias" class="thumb">
+                        <div class="camera-info">
+                            <p>Espetinho Rodoviária</p>
+                            <span>81 views · 3 meses ago</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="imagens/caixaEconomica.jpeg" alt="Caixa Econômica Federal" class="thumb">
+                        <div class="camera-info">
+                            <p>Caixa Econômica Federal</p>
+                            <span>91 views · 3 meses ago</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="imagens/pracaAdventista.jpeg" alt="Praça Adventista" class="thumb">
+                        <div class="camera-info">
+                            <p>Praça Adventista</p>
+                            <span>73 views · 3 meses ago</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="imagens/espetinhoRodoviaria.jpeg" alt="Um paraíso em Tianguá" class="thumb">
+                        <div class="camera-info">
+                            <p>Espetinho Rodoviária</p>
+                            <span>152 views · 1 ano ago</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="imagens/container.jpg" alt="Container Shopping" class="thumb">
+                        <div class="camera-info">
+                            <p>Container Shopping</p>
+                            <span>140 views · 1 ano ago</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="imagens/topic.jpg" alt="Praça das Topics" class="thumb">
+                        <div class="camera-info">
+                            <p>Praça das Topics</p>
+                            <span>119 views · 1 ano ago</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="imagens/vila.jpg" alt="Vila Mariana" class="thumb">
+                        <div class="camera-info">
+                            <p>Vila Mariana</p>
+                            <span>148 views · 1 ano ago</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
+    
     </main>
 
     <footer>
@@ -139,7 +264,7 @@
         var customIcon = L.icon({
             iconUrl: 'imagens/video.png', // Caminho do ícone
             iconSize: [38, 38], // Tamanho do ícone
-            popupAnchor: [0, -16], // Posição do popup
+            popupAnchor: [-15, -15], // Posição do popup
         });
 
         // Função para manter o popup aberto quando o mouse estiver sobre ele
@@ -157,31 +282,31 @@
                     marker.closePopup(); // Reativa o fechamento
                 });
             });
-        }   
+        }
 
         // Adicionando múltiplos marcadores ao cluster
         var locations = [
-            { lat: -3.745286, lng: -41.102326, name: "Caixa Econômica", image: "imagens/camera1.jpeg", link: "camera1.html" },
-            { lat: -3.755282, lng: -41.101322, name: "Localização 1", image: "imagens/camera1.jpeg", link: "camera1.html" },
-            { lat: -3.766282, lng: -41.110322, name: "Localização 2", image: "imagens/camera2.jpeg", link: "camera1.html" },
-            { lat: -3.777282, lng: -41.116322, name: "Localização 3", image: "imagens/camera3.jpeg", link: "camera1.html" },
-            { lat: -3.785284, lng: -41.109324, name: "Localização 4", image: "imagens/camera1.jpeg", link: "camera1.html" },
-            { lat: -3.796284, lng: -41.112324, name: "Localização 5", image: "imagens/camera2.jpeg", link: "camera1.html" },
+            { lat: -3.755282, lng: -41.101322, name: "Caixa Econômica", image: "imagens/caixaEconomica.jpeg", link: "camera1.html" },
+            { lat: -3.766282, lng: -41.110322, name: "Caixa Econômica", image: "imagens/caixaEconomica.jpeg", link: "camera1.html" },
+            { lat: -3.777282, lng: -41.116322, name: "Caixa Econômica", image: "imagens/caixaEconomica.jpeg", link: "camera1.html" },
+            { lat: -3.785284, lng: -41.109324, name: "Caixa Econômica", image: "imagens/caixaEconomica.jpeg", link: "camera1.html" },
+            { lat: -3.796284, lng: -41.112324, name: "Caixa Econômica", image: "imagens/caixaEconomica.jpeg", link: "camera1.html" },
         ];
 
         locations.forEach(function (location) {
             var marker = L.marker([location.lat, location.lng], { icon: customIcon });
-            var popupContent =
-                `<div class="leaflet-popup-content">
+            var popupContent = `
+                <div class="leaflet-popup-content">
                     <h3>${location.name}</h3>
                     <a href="${location.link}" target="_blank">
                         <img src="${location.image}" alt="Imagem 1">
                     </a>
                     <!-- Imagem adicionada com ícone de player -->
-                    <div style="position: relative; display: inline-block; top: -75px;">
-                        <div class="player-icon"></div>
+                    <div style="position: relative; display: inline-block;">
+                        <a href="${location.link}" target="_blank" class="player-link">
+                            <div class="player-icon"></div>
+                        </a>
                     </div>
-                    
                 </div>`;
 
             marker.bindPopup(popupContent);

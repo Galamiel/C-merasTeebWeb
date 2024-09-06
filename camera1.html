@@ -10,31 +10,134 @@
 </head>
 
 <body>
-    <header>
+    <header id="inicio">
         <div class="container">
             <div class="logo">
-               <a href="index.html"> <img src="imagens/TeebLogo.png" alt="Logo"></a>
+                <a href="index.html"><img src="imagens/TeebLogo.png" alt="Logo"></a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Câmeras</a></li>
-                    <li><a href="mapa.html">Mapa</a></li>
+                    <li><a href="#inicio">Início</a></li>
+                    <li class="dropdown">
+                        <a href="#cameras" class="dropdown-toggle">Câmeras</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tiangua.html">Tianguá</a></li>
+                            <li><a href="acarape.html">Acarape</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#mapa">Mapa</a></li>
                     <li><a href="#">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <a href="#inicio" class="back-to-top">&#x2191;</a>
 
     <main>
         <section class="video-detalhes">
-            <h1>Câmera 1 - Localização</h1>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h2>Detalhes do Vídeo</h2>
-                <p>Aqui estão as informações detalhadas sobre esta câmera específica...</p>
+            <div class="video-info-container">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dIChLG4_WNs?si=JzxxKvyaR1HZ19Ra" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                    <!-- Agrupando as informações do vídeo e os comentários -->
+                    <div class="info-e-comentarios">
+                        <div class="video-info">
+                            <h1>Praça dos Ciganos</h1>
+                            <p>Aqui estão as informações detalhadas sobre esta câmera específica...</p>
+                        </div>
+
+                        <!-- Seção de Comentários -->
+                        <section class="comentarios">
+                            <h2>Comentários</h2>
+                            <div class="comentario">
+                                <p><strong>Usuário 1:</strong> Lugar incrível, sempre passando por aqui!</p>
+                                <span>2 semanas atrás</span>
+                            </div>
+                            <div class="comentario">
+                                <p><strong>Usuário 2:</strong> Câmera com ótima resolução, muito bom acompanhar!</p>
+                                <span>1 mês atrás</span>
+                            </div>
+                            <div class="comentario">
+                                <p><strong>Usuário 3:</strong> A vista da praça é linda. Sugiro adicionarem mais câmeras na região.</p>
+                                <span>3 meses atrás</span>
+                            </div>
+
+                            <form class="novo-comentario">
+                                <textarea placeholder="Adicione um comentário..."></textarea>
+                                <button type="submit">Comentar</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="camera-options">
+                    <h2>Opções de Câmera</h2>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="/imagens/espetinhoRodoviaria.jpeg" alt="Rodoviária Pizzarias" class="thumb">
+                                <div class="camera-info">
+                                    <p>Espetinho Rodoviária</p>
+                                    <span>81 views · 3 meses ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="imagens/caixaEconomica.jpeg" alt="Caixa Econômica Federal" class="thumb">
+                                <div class="camera-info">
+                                    <p>Caixa Econômica Federal</p>
+                                    <span>91 views · 3 meses ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="imagens/pracaAdventista.jpeg" alt="Praça Adventista" class="thumb">
+                                <div class="camera-info">
+                                    <p>Praça Adventista</p>
+                                    <span>73 views · 3 meses ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="imagens/espetinhoRodoviaria.jpeg" alt="Um paraíso em Tianguá" class="thumb">
+                                <div class="camera-info">
+                                    <p>Espetinho Rodoviária</p>
+                                    <span>152 views · 1 ano ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="imagens/container.jpg" alt="Container Shopping" class="thumb">
+                                <div class="camera-info">
+                                    <p>Container Shopping</p>
+                                    <span>140 views · 1 ano ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="imagens/topic.jpg" alt="Praça das Topics" class="thumb">
+                                <div class="camera-info">
+                                    <p>Praça das Topics</p>
+                                    <span>119 views · 1 ano ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="imagens/vila.jpg" alt="Vila Mariana" class="thumb">
+                                <div class="camera-info">
+                                    <p>Vila Mariana</p>
+                                    <span>148 views · 1 ano ago</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
@@ -45,6 +148,7 @@
             <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
         </div>
     </footer>
+
 </body>
 
 </html>

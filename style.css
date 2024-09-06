@@ -58,17 +58,18 @@ body {
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+   
+    width: 100%;
+    top: 0;
+    left: 0;
     background-color: rgb(14, 19, 20);
     padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    background-attachment: fixed;
 }
 
-/* Container do cabeçalho */
-.container {
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,13 +78,11 @@ header {
     margin: 0 auto;
 }
 
-/* Logo */
 header .logo img {
-    width: 150px; /* Ajuste conforme necessário */
+    width: 150px;
     height: auto;
 }
 
-/* Navegação */
 header nav {
     flex-grow: 1;
 }
@@ -96,27 +95,75 @@ header nav ul {
 }
 
 header nav ul li {
-        padding: 5px 10px;
-        border-radius: 5px;
-        background-color: transparent; /* Cor de fundo padrão */
-        transition: background-color 0.3s ease;
-    
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
 }
 
 header nav ul li a {
-        text-decoration: none;
-        color: #c6c5c5;
-        font-weight: bold;
-        transition: color 0.3s ease;
-        display: block; /* Faz com que o link ocupe toda a área do li */
-        padding: 10px 15px; /* Adiciona um padding ao link para que ele não fique colado às bordas */
+    text-decoration: none;
+    color: #c6c5c5;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 10px 15px;
 }
 
 header nav ul li:hover {
-    background-color: rgb(241, 196, 0); /* Cor de fundo ao passar o mouse */
+    background-color: rgb(241, 196, 0);
 }
+
 header nav ul li a:hover {
     color: #000000;
+}
+
+header .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(14, 19, 20);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    list-style: none;
+    margin: 0;
+    width: max-content;
+    z-index: 1000;
+}
+
+header .dropdown-menu li {
+    margin: 0;
+}
+
+header .dropdown-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+header .dropdown:hover .dropdown-menu {
+    display: block;
+}
+.profile-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.profile-icon a {
+    color: #c6c5c5;
+    font-size: 30px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.profile-icon a:hover {
+    color: rgb(241, 196, 0);
 }
 /*Btn Voltar para o topo*/
 .back-to-top {
@@ -125,235 +172,22 @@ header nav ul li a:hover {
     right: 20px;
     background-color: rgb(241, 196, 0);
     color: #000000;
-    padding: 10px 15px;
-    border-radius: 1000%;
+    padding: 20px;
+    border-radius: 50%;
     text-align: center;
     font-size: 1.5em;
     text-decoration: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-    z-index: 1000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
 }
 
 .back-to-top:hover {
     background-color: rgb(201, 165, 6);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 
-/* Banner */
-/* Banner com background fixo */
-.banner {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Mantém a altura da tela cheia */
-    overflow: hidden;
-    text-align: center;
-    color: #ffffff;
-    background-image: url('imagens/pessoas.jpg'); /* Imagem de fundo do banner */
-    background-size: cover; /* Garante que a imagem cubra toda a área */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
-    background-attachment: fixed; /* Fixa o background enquanto o conteúdo rola */
-}
-
-.banner-image {
-    display: none; /* Esconde a tag img, já que estamos usando a imagem como fundo */
-}
-
-.banner-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    text-align: center;
-}
-
-
-.banner-content h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-}
-
-.banner-content p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.btn-primary {
-    background-color: rgb(241, 196, 0);
-    color: #000000;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: rgb(201, 165, 6);
-}
-
-
-/* Seção de Destaques */
-.destaques {
-    padding: 40px 0;
-    background-color: #f9f9f9;
-}
-
-.destaques h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.destaque-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.destaque-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.destaque-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.destaque-item h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-/* Seção Sobre */
-.sobre {
-    position: relative;
-    margin-top: -150px;
-    display: flex;
-    align-items: center;
-    padding: 20px 0;
-    background-image: url('imagens/background2.jpg'); 
-    background-size: cover; /* Faz com que a imagem cubra toda a área */
-    background-position: center; /* Centraliza a imagem de fundo */
-    background-repeat: no-repeat;
-}
-
-.sobre-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.sobre-text {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.sobre-text h2 {
-    color: rgb(253, 198, 0);
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.sobre-text p {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-
-.sobre-image {
-    flex: 1;
- 
-}
-
-.sobre-image img {
-    width: 550px; /* Aumenta o tamanho da imagem */
-    height: 550px; /* Mantém a altura proporcional */
-    border-radius: 50%; /* Deixa a imagem redonda */
-    float: right; /* Alinha a imagem à direita */
-    object-fit: cover; /* Garante que a imagem cubra o círculo */
-    margin-left: 90px; /* Adiciona um espaço entre o texto e a imagem */
-}
-
-.informacoes {
-    padding: 40px 0;
-}
-
-.informacoes h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.info-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.info-item h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-
-/* Controle Câmeras */
-/* Seção de Câmeras com background fixo */
-.cameras {
-    padding: 40px 0;
-    background-image: url('imagens/backgroundescuro.jpeg'); /* Insira o caminho correto da imagem de fundo */
-    background-size: cover; /* Cobre toda a área da seção */
-    background-position: center; /* Centraliza a imagem de fundo */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    background-attachment: fixed; /* Fixa o background enquanto o conteúdo rola */
-}
-
-.cameras .camera-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.camera-item {
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    flex: 1 1 calc(25% - 20px);
-    margin: 10px;
-}
-
-.camera-item iframe {
-    width: 100%;
-    height: 200px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.camera-item p {
-    font-size: 1.1em;
-    color: #333;
-}
-
-/* Rodapé */
 footer {
     background-color: rgb(14, 19, 20);
     color: #efefef;
